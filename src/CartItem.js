@@ -11,7 +11,20 @@ class CartItem extends React.Component {
         }
         // this.increaseQuantity = this.increaseQuantity.bind(this)
         //Explanation => instead of doing this we can direct create arrow function of increaseQuantity function  then no need of defined it in constuctore (that means bindings)
+        // this.testing();
     }
+    // testing () {
+    //   const promise = new Promise((resolve , reject ) =>{
+    //     setTimeout( () =>{
+    //      resolve('done');
+    //     },3000)
+    //   })
+    //   promise.then( () =>{
+    //     // setState acts like synchronous call
+    //     this.setState( {qty:100} );
+    //     console.log('this.state',this.state);
+    //   });
+    // }
     increaseQuantity = () =>{
         // console.log('Test !');
         // this.state.qty +=1;
@@ -20,12 +33,17 @@ class CartItem extends React.Component {
         //   qty:this.state.qty+1
         // })
         // setState form 2 => use this if previous state is required
+        // React does batching in setstate function that means if we have more than one setState function call react we combine it all that is called batching  and asyncrouncsly 
+        // but in case of ajax call or promises there is no batching in react
         this.setState((prevState) =>{
           return {
             qty:prevState.qty+1
           }
-        })
-        console.log('this.state',this.state);
+        }, () =>{
+          console.log('this.state',this.state)
+          // basically setState is a asyncrounous but by using callback we can make it syncronous that we have used here
+        } )
+        // console.log('this.state',this.state);
     }
 
     decreaseQuantity = () =>{    
