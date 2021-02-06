@@ -9,6 +9,13 @@ class CartItem extends React.Component {
             qty:1,
             img:'',
         }
+        // this.increaseQuantity = this.increaseQuantity.bind(this)
+        //Explanation => instead of doing this we can direct create arrow function of increaseQuantity function  then no need of defined it in constuctore (that means bindings)
+    }
+    increaseQuantity = () =>{
+        // console.log('Test !');
+        console.log('this',this);
+        console.log('this.state',this.state);
     }
   render () {
       const {title , price , qty , img } =this.state;
@@ -22,9 +29,17 @@ class CartItem extends React.Component {
           <div style={ { color: '#777' } }>Rs {price}</div>
           <div style={ { color: '#777' } }>Qty: {qty}</div>
           <div className="cart-item-actions">
-            <img className = "action-icons" alt ="increase" src="https://www.flaticon.com/svg/vstatic/svg/748/748113.svg?token=exp=1612586967~hmac=68501722632156f477cc423f6ec74785"/>
-            <img className = "action-icons" alt ="increase" src="https://www.flaticon.com/svg/vstatic/svg/992/992683.svg?token=exp=1612586785~hmac=84f71d210e3a4e514e7488cbf88f8b9f"/>
-            <img className = "action-icons" alt ="increase" src="https://www.flaticon.com/svg/vstatic/svg/1214/1214428.svg?token=exp=1612586995~hmac=291677528d93d2a169791dc09870cb8f"/>
+            <img className = "action-icons" 
+            alt ="increase" 
+            src="https://www.flaticon.com/svg/vstatic/svg/748/748113.svg?token=exp=1612586967~hmac=68501722632156f477cc423f6ec74785" onClick = {this.increaseQuantity} />
+
+            <img className = "action-icons"
+             alt ="increase" 
+             src="https://www.flaticon.com/svg/vstatic/svg/992/992683.svg?token=exp=1612586785~hmac=84f71d210e3a4e514e7488cbf88f8b9f"/>
+
+            <img className = "action-icons"
+             alt ="increase"
+              src="https://www.flaticon.com/svg/vstatic/svg/1214/1214428.svg?token=exp=1612586995~hmac=291677528d93d2a169791dc09870cb8f"/>
           </div>
         </div>
       </div>
