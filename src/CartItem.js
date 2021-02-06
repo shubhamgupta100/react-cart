@@ -14,7 +14,17 @@ class CartItem extends React.Component {
     }
     increaseQuantity = () =>{
         // console.log('Test !');
-        console.log('this',this);
+        // this.state.qty +=1;
+        // setState form 1
+        // this.setState({
+        //   qty:this.state.qty+1
+        // })
+        // setState form 2 => use this if previous state is required
+        this.setState((prevState) =>{
+          return {
+            qty:prevState.qty+1
+          }
+        })
         console.log('this.state',this.state);
     }
   render () {
@@ -35,7 +45,7 @@ class CartItem extends React.Component {
 
             <img className = "action-icons"
              alt ="increase" 
-             src="https://www.flaticon.com/svg/vstatic/svg/992/992683.svg?token=exp=1612586785~hmac=84f71d210e3a4e514e7488cbf88f8b9f"/>
+             src="https://www.flaticon.com/svg/vstatic/svg/992/992683.svg?token=exp=1612586785~hmac=84f71d210e3a4e514e7488cbf88f8b9f" />
 
             <img className = "action-icons"
              alt ="increase"
