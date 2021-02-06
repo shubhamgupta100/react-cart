@@ -1,18 +1,30 @@
 import React from 'react';
 
 class CartItem extends React.Component {
+    constructor (){
+        super();
+        this.state = {
+            title:'Mobile Phone',
+            price:999,
+            qty:1,
+            img:'',
+        }
+    }
   render () {
+      const {title , price , qty , img } =this.state;
     return (
       <div className="cart-item">
         <div className="left-block">
           <img style={styles.image} />
         </div>
         <div className="right-block">
-          <div style={ { fontSize: 25 } }>Phone</div>
-          <div style={ { color: '#777' } }>Rs 999</div>
-          <div style={ { color: '#777' } }>Qty: 1</div>
+          <div style={ { fontSize: 25 } }>{this.state.title}</div>
+          <div style={ { color: '#777' } }>Rs {price}</div>
+          <div style={ { color: '#777' } }>Qty: {qty}</div>
           <div className="cart-item-actions">
-            {/* Buttons */}
+            <img className = "action-icons" alt ="increase" src="https://www.flaticon.com/svg/vstatic/svg/748/748113.svg?token=exp=1612586967~hmac=68501722632156f477cc423f6ec74785"/>
+            <img className = "action-icons" alt ="increase" src="https://www.flaticon.com/svg/vstatic/svg/992/992683.svg?token=exp=1612586785~hmac=84f71d210e3a4e514e7488cbf88f8b9f"/>
+            <img className = "action-icons" alt ="increase" src="https://www.flaticon.com/svg/vstatic/svg/1214/1214428.svg?token=exp=1612586995~hmac=291677528d93d2a169791dc09870cb8f"/>
           </div>
         </div>
       </div>
@@ -22,8 +34,8 @@ class CartItem extends React.Component {
 
 const styles = {
   image: {
-    height: 110,
-    width: 110,
+    height: 120,
+    width: 120,
     borderRadius: 4,
     background: '#ccc'
   }
