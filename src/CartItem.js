@@ -1,49 +1,15 @@
 import React from 'react';
 
 class CartItem extends React.Component {
-    constructor (){
-        super();
-        this.state = {
-            title:'Mobile Phone',
-            price:999,
-            qty:1,
-            img:'',
-        }
-        // this.increaseQuantity = this.increaseQuantity.bind(this)
-        //Explanation => instead of doing this we can direct create arrow function of increaseQuantity function  then no need of defined it in constuctore (that means bindings)
-        // this.testing();
-    }
-    // testing () {
-    //   const promise = new Promise((resolve , reject ) =>{
-    //     setTimeout( () =>{
-    //      resolve('done');
-    //     },3000)
-    //   })
-    //   promise.then( () =>{
-    //     // setState acts like synchronous call
-    //     this.setState( {qty:100} );
-    //     console.log('this.state',this.state);
-    //   });
-    // }
     increaseQuantity = () =>{
-        // console.log('Test !');
-        // this.state.qty +=1;
-        // setState form 1
-        // this.setState({
-        //   qty:this.state.qty+1
-        // })
-        // setState form 2 => use this if previous state is required
-        // React does batching in setstate function that means if we have more than one setState function call react we combine it all that is called batching  and asyncrouncsly 
-        // but in case of ajax call or promises there is no batching in react
+
         this.setState((prevState) =>{
           return {
             qty:prevState.qty+1
           }
         }, () =>{
           console.log('this.state',this.state)
-          // basically setState is a asyncrounous but by using callback we can make it syncronous that we have used here
         } )
-        // console.log('this.state',this.state);
     }
 
     decreaseQuantity = () =>{    
@@ -56,30 +22,18 @@ class CartItem extends React.Component {
           qty:prevState.qty-1
         }
       })
-      // this.setState((prevState) =>{
-      //   if(prevState.qty >0){
-      //     return {
-      //       qty:prevState.qty-1
-      //     }
-      //   }
-      //   else{
-      //     return{
-      //       qty:prevState.qty
-      //     }          
-      //   }    
-      // })
-      // console.log('this.state',this.state);
   }
    
   render () {
-      const {title , price , qty , img } =this.state;
+      const {title , price , qty , img } = this.props.product;
     return (
+     
       <div className="cart-item">
         <div className="left-block">
           <img style={styles.image} />
         </div>
         <div className="right-block">
-          <div style={ { fontSize: 25 } }>{this.state.title}</div>
+          <div style={ { fontSize: 25 } }>{title}</div>
           <div style={ { color: '#777' } }>Rs {price}</div>
           <div style={ { color: '#777' } }>Qty: {qty}</div>
           <div className="cart-item-actions">
