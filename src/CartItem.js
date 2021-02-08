@@ -1,16 +1,7 @@
 import React from 'react';
 
 class CartItem extends React.Component {
-    increaseQuantity = () =>{
-
-        this.setState((prevState) =>{
-          return {
-            qty:prevState.qty+1
-          }
-        }, () =>{
-          console.log('this.state',this.state)
-        } )
-    }
+    
 
     decreaseQuantity = () =>{    
       const {qty} = this.state
@@ -39,7 +30,7 @@ class CartItem extends React.Component {
           <div className="cart-item-actions">
             <img className = "action-icons" 
             alt ="increase" 
-            src="https://www.flaticon.com/svg/vstatic/svg/748/748113.svg?token=exp=1612586967~hmac=68501722632156f477cc423f6ec74785" onClick = {this.increaseQuantity} />
+            src="https://www.flaticon.com/svg/vstatic/svg/748/748113.svg?token=exp=1612586967~hmac=68501722632156f477cc423f6ec74785" onClick = { () => this.props.onIncreaseQuantity(this.props.product)} />
 
             <img className = "action-icons"
              alt ="increase" 
